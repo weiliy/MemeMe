@@ -12,6 +12,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBOutlet weak var imagePickView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePickView.contentMode = .scaleAspectFill
         // Do any additional setup after loading the view.
     }
 
@@ -24,6 +25,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         print(info)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.imagePickView.image = image
+        }
         dismiss(animated: true, completion: nil)
     }
     
