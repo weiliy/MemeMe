@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,30 +18,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ma7-XH-vqh">
-                                <rect key="frame" x="76" y="79" width="241" height="241"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="241" id="v6W-bZ-rB9"/>
-                                    <constraint firstAttribute="width" secondItem="ma7-XH-vqh" secondAttribute="height" id="zXf-cC-4hf"/>
-                                </constraints>
+                                <rect key="frame" x="40" y="79" width="313" height="639"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqR-Ni-tsj">
-                                <rect key="frame" x="135" y="621" width="123" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Pick A Image"/>
-                                <connections>
-                                    <action selector="pickAImageBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xah-UI-vnY"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DQ-cP-S1O">
+                                <rect key="frame" x="73.000000000000014" y="738" width="247.33333333333337" height="34.333333333333371"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqR-Ni-tsj">
+                                        <rect key="frame" x="0.0" y="0.0" width="123.66666666666667" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Pick a image"/>
+                                        <connections>
+                                            <action selector="pickAImageFromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wUV-Nb-sN2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qV1-jw-dG0">
+                                        <rect key="frame" x="123.66666666666666" y="0.0" width="123.66666666666666" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Take a Image"/>
+                                        <connections>
+                                            <action selector="pickAImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xdj-2a-ykN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ma7-XH-vqh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="7lg-wV-eSC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ma7-XH-vqh" secondAttribute="bottom" constant="100" id="Gpa-tc-MWf"/>
+                            <constraint firstItem="5DQ-cP-S1O" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HMg-Rc-b3m"/>
+                            <constraint firstItem="5DQ-cP-S1O" firstAttribute="top" secondItem="ma7-XH-vqh" secondAttribute="bottom" constant="20" id="hJn-Bg-lTA"/>
                             <constraint firstItem="ma7-XH-vqh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hyA-ES-t0j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ma7-XH-vqh" secondAttribute="trailing" constant="40" id="nYg-WF-M5F"/>
+                            <constraint firstItem="ma7-XH-vqh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="uAg-CZ-H31"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="qV1-jw-dG0" id="38R-Wh-eJv"/>
                         <outlet property="imagePickView" destination="ma7-XH-vqh" id="pe3-mj-Zk9"/>
                     </connections>
                 </viewController>
