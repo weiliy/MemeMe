@@ -41,22 +41,38 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AGV-fh-Nau" userLabel="Top Text">
+                                <rect key="frame" x="180.66666666666666" y="99" width="32" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JpL-K5-Fx5" userLabel="Bottom Text">
+                                <rect key="frame" x="180.66666666666666" y="664" width="32" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="JpL-K5-Fx5" firstAttribute="centerX" secondItem="ma7-XH-vqh" secondAttribute="centerX" id="5Pz-EQ-8Tg"/>
                             <constraint firstItem="ma7-XH-vqh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="7lg-wV-eSC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ma7-XH-vqh" secondAttribute="bottom" constant="100" id="Gpa-tc-MWf"/>
                             <constraint firstItem="5DQ-cP-S1O" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HMg-Rc-b3m"/>
                             <constraint firstItem="5DQ-cP-S1O" firstAttribute="top" secondItem="ma7-XH-vqh" secondAttribute="bottom" constant="20" id="hJn-Bg-lTA"/>
                             <constraint firstItem="ma7-XH-vqh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hyA-ES-t0j"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ma7-XH-vqh" secondAttribute="trailing" constant="40" id="nYg-WF-M5F"/>
+                            <constraint firstItem="AGV-fh-Nau" firstAttribute="centerX" secondItem="JpL-K5-Fx5" secondAttribute="centerX" id="rWu-V6-lC1"/>
                             <constraint firstItem="ma7-XH-vqh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="uAg-CZ-H31"/>
+                            <constraint firstItem="AGV-fh-Nau" firstAttribute="top" secondItem="ma7-XH-vqh" secondAttribute="top" constant="20" id="yHB-iK-jto"/>
+                            <constraint firstItem="JpL-K5-Fx5" firstAttribute="bottom" secondItem="ma7-XH-vqh" secondAttribute="bottom" constant="-20" id="zW7-i3-FLt"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="JpL-K5-Fx5" id="pWH-o2-OjF"/>
                         <outlet property="cameraButton" destination="qV1-jw-dG0" id="38R-Wh-eJv"/>
                         <outlet property="imagePickView" destination="ma7-XH-vqh" id="pe3-mj-Zk9"/>
+                        <outlet property="topTextField" destination="AGV-fh-Nau" id="sjJ-4b-oZM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
