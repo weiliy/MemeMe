@@ -21,7 +21,7 @@
                                 <rect key="frame" x="40" y="79" width="313" height="639"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DQ-cP-S1O">
-                                <rect key="frame" x="73.000000000000014" y="738" width="247.33333333333337" height="34.333333333333371"/>
+                                <rect key="frame" x="11" y="738" width="371" height="34.333333333333371"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqR-Ni-tsj">
                                         <rect key="frame" x="0.0" y="0.0" width="123.66666666666667" height="34.333333333333336"/>
@@ -37,6 +37,14 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Take a Image"/>
                                         <connections>
                                             <action selector="pickAImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xdj-2a-ykN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxv-os-4La" userLabel="Save">
+                                        <rect key="frame" x="247.33333333333329" y="0.0" width="123.66666666666666" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                        <connections>
+                                            <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zO0-L1-FsO"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -13,6 +13,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
+    
+    struct Meme {
+        var topText: String
+        var bottomText: String
+        var originalImage: UIImage
+        var memedImage: UIImage
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickView.contentMode = .scaleAspectFill
@@ -114,6 +122,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         textField.resignFirstResponder()
         return true
+    }
+    
+    func generateMemedImage() -> UIImage {
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return memedImage
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        let memeImaged = generateMemedImage()
+        imagePickView.image = memeImaged
     }
 }
 
