@@ -9,11 +9,13 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var imageBoardView: UIView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
-    
+    @IBOutlet weak var shareButton: UIButton!
+
     struct Meme {
         var topText: String
         var bottomText: String
@@ -48,6 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        shareButton.isEnabled = imagePickView.image !== nil
         subscribeToKeyboardNotifications()
     }
     
@@ -76,6 +79,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         print(info)
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.imagePickView.image = image
+            shareButton.isEnabled = true
+        } else {
+            shareButton.isEnabled = false
         }
         dismiss(animated: true, completion: nil)
     }
@@ -126,18 +132,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     func generateMemedImage() -> UIImage {
         
-        // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setToolbarHidden(true, animated: false)
+        
+        UIGraphicsBeginImageContext(self.imageBoardView.bounds.size)
+        imageBoardView.drawHierarchy(in: self.imageBoardView.bounds, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setToolbarHidden(false, animated: false)
         
         return memedImage
     }
     
     @IBAction func save(_ sender: Any) {
-        let memeImaged = generateMemedImage()
-        imagePickView.image = memeImaged
+        let memedImage = generateMemedImage()
+        _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickView.image!, memedImage: memedImage)
+        imagePickView.image = memedImage
     }
 }
 
