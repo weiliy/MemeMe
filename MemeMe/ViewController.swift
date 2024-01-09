@@ -149,7 +149,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBAction func save(_ sender: Any) {
         let memedImage = generateMemedImage()
         _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickView.image!, memedImage: memedImage)
-        imagePickView.image = memedImage
+        
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
 }
 
