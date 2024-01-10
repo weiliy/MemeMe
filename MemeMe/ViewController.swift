@@ -79,6 +79,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         print(info)
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.imagePickView.image = image
+            self.imagePickView.contentMode = .scaleAspectFit
             shareButton.isEnabled = true
         } else {
             shareButton.isEnabled = false
