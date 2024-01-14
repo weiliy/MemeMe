@@ -25,32 +25,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagePickView.contentMode = .scaleAspectFill
-
-        topTextField.delegate = self
-        topTextField.textAlignment = .center
         
-        bottomTextField.delegate = self
-        bottomTextField.textAlignment = .center
-        
-        topTextField.text = "TOP MEME!!!"
-        bottomTextField.text = "BOTTOM MEME!!!"
-        
-        let memeTextAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor: UIColor(.gray),
-            NSAttributedString.Key.strokeColor: UIColor(.red),
-            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedString.Key.strokeWidth:  2,
-        ]
-        
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
+        setupImage(view: imagePickView)
+        setupTextField(textField: topTextField, text: "TOP MEME!!!")
+        setupTextField(textField: bottomTextField, text: "BOTTOM MEME!!!")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        shareButton.isEnabled = imagePickView.image !== nil
+        updateButtonStatus()
         subscribeToKeyboardNotifications()
     }
     
@@ -153,6 +136,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
+    }
+    
+    // MARK: - UI Related Setup Functions
+    
+    func setupTextField(textField: UITextField, text: String) {
+        textField.delegate = self
+        textField.textAlignment = .center
+        
+        textField.text = text
+        
+        let textAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor(.gray),
+            NSAttributedString.Key.strokeColor: UIColor(.red),
+            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedString.Key.strokeWidth:  2,
+        ]
+        
+        textField.defaultTextAttributes = textAttributes
+    }
+
+    
+    func setupImage(view: UIImageView) {
+        view.contentMode = .scaleAspectFill
+    }
+    
+    func updateButtonStatus() {
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        shareButton.isEnabled = imagePickView.image !== nil
     }
 }
 
