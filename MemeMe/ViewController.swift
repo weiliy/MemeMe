@@ -15,6 +15,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBOutlet weak var imagePickView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareActionButton: UIBarButtonItem!
 
     struct Meme {
         var topText: String
@@ -63,9 +64,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.imagePickView.image = image
             self.imagePickView.contentMode = .scaleAspectFit
-            shareButton.isEnabled = true
+            shareActionButton.isEnabled = true
         } else {
-            shareButton.isEnabled = false
+            shareActionButton.isEnabled = false
         }
         dismiss(animated: true, completion: nil)
     }
@@ -142,9 +143,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     func setupTextField(textField: UITextField, text: String) {
         textField.delegate = self
-        textField.textAlignment = .center
-        
         textField.text = text
+        textField.textAlignment = .center
         
         let textAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor(.gray),
@@ -163,7 +163,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     func updateButtonStatus() {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        shareButton.isEnabled = imagePickView.image !== nil
+        shareActionButton.isEnabled = imagePickView.image !== nil
     }
 }
 
