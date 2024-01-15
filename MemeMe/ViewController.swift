@@ -14,7 +14,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var shareActionButton: UIBarButtonItem!
 
     struct Meme {
@@ -28,8 +27,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         super.viewDidLoad()
         
         setupImage(view: imagePickView)
-        setupTextField(textField: topTextField, text: "TOP MEME!!!")
-        setupTextField(textField: bottomTextField, text: "BOTTOM MEME!!!")
+        setupTextField(textField: topTextField, text: "TOP")
+        setupTextField(textField: bottomTextField, text: "BOTTOM")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,17 +142,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     func setupTextField(textField: UITextField, text: String) {
         textField.delegate = self
-        textField.text = text
-        textField.textAlignment = .center
-        
+
         let textAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor: UIColor(.gray),
-            NSAttributedString.Key.strokeColor: UIColor(.red),
-            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedString.Key.strokeWidth:  2,
+            .foregroundColor: UIColor(.white),
+            .strokeColor: UIColor(.black),
+            .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            .strokeWidth:  -3,
         ]
-        
+
         textField.defaultTextAttributes = textAttributes
+        textField.textAlignment = .center
+        textField.text = text
     }
 
     
@@ -162,7 +161,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     }
     
     func updateButtonStatus() {
+        #if targetEnvironment(simulator)
+        cameraButton.isEnabled = false
+        #else
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        #endif
         shareActionButton.isEnabled = imagePickView.image !== nil
     }
 }
