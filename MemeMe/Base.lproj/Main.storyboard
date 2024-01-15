@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aei-ks-gaQ" userLabel="ImageBoard">
-                                <rect key="frame" x="0.0" y="157.33333333333331" width="393" height="537.33333333333348"/>
+                                <rect key="frame" x="0.0" y="83" width="393" height="686"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ma7-XH-vqh">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="537.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="686"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AGV-fh-Nau" userLabel="Top Text">
                                         <rect key="frame" x="20" y="76" width="353" height="34"/>
@@ -29,7 +29,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JpL-K5-Fx5" userLabel="Bottom Text">
-                                        <rect key="frame" x="28" y="427.33333333333326" width="337" height="34"/>
+                                        <rect key="frame" x="28" y="576" width="337" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
@@ -49,36 +49,31 @@
                                     <constraint firstItem="ma7-XH-vqh" firstAttribute="centerX" secondItem="Aei-ks-gaQ" secondAttribute="centerX" id="ymw-eO-3jk"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DQ-cP-S1O">
-                                <rect key="frame" x="73.000000000000014" y="714.66666666666663" width="247.33333333333337" height="34.333333333333371"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqR-Ni-tsj">
-                                        <rect key="frame" x="0.0" y="0.0" width="123.66666666666667" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Pick a image"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y49-xa-Tdh">
+                                <rect key="frame" x="0.0" y="720" width="393" height="49"/>
+                                <items>
+                                    <barButtonItem image="photo.badge.plus" catalog="system" id="ggT-j8-ZIx" userLabel="Photo">
                                         <connections>
-                                            <action selector="pickAImageFromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wUV-Nb-sN2"/>
+                                            <action selector="pickAImageFromAlbum:" destination="BYZ-38-t0r" id="sEz-Ro-YkH"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qV1-jw-dG0">
-                                        <rect key="frame" x="123.66666666666666" y="0.0" width="123.66666666666666" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Take a Image"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="camera" id="IfF-5x-COQ">
                                         <connections>
-                                            <action selector="pickAImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xdj-2a-ykN"/>
+                                            <action selector="pickAImageFromCamera:" destination="BYZ-38-t0r" id="Wi9-m0-G4Y"/>
                                         </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Y49-xa-Tdh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2oG-Kr-Lke"/>
                             <constraint firstItem="Aei-ks-gaQ" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="88e-WQ-coe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5DQ-cP-S1O" secondAttribute="bottom" constant="20" id="DSQ-MH-8dv"/>
-                            <constraint firstItem="5DQ-cP-S1O" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GlR-KZ-Twf"/>
-                            <constraint firstItem="5DQ-cP-S1O" firstAttribute="top" secondItem="Aei-ks-gaQ" secondAttribute="bottom" constant="20" id="Iut-6e-szb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y49-xa-Tdh" secondAttribute="bottom" id="LeZ-0l-vao"/>
+                            <constraint firstItem="Y49-xa-Tdh" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="UVn-cR-O90"/>
                             <constraint firstItem="Aei-ks-gaQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aca-tn-b21"/>
+                            <constraint firstItem="Aei-ks-gaQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fc6-fR-SIa"/>
                             <constraint firstItem="Aei-ks-gaQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="v8i-Lo-VIS"/>
                             <constraint firstItem="Aei-ks-gaQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ygb-kk-oUs"/>
                         </constraints>
@@ -94,10 +89,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomTextField" destination="JpL-K5-Fx5" id="pWH-o2-OjF"/>
-                        <outlet property="cameraButton" destination="qV1-jw-dG0" id="38R-Wh-eJv"/>
+                        <outlet property="cameraButton" destination="IfF-5x-COQ" id="7dh-Gd-PT8"/>
                         <outlet property="imageBoardView" destination="Aei-ks-gaQ" id="e3j-od-lhs"/>
                         <outlet property="imagePickView" destination="ma7-XH-vqh" id="pe3-mj-Zk9"/>
-                        <outlet property="shareActionButton" destination="Gcs-hC-aRq" id="ldv-ks-606"/>
+                        <outlet property="navigateItemView" destination="rU7-Hv-1TA" id="OEC-Rt-LuD"/>
+                        <outlet property="shareActionButton" destination="Gcs-hC-aRq" id="PY9-yJ-mod"/>
+                        <outlet property="toolbarView" destination="Y49-xa-Tdh" id="Bfn-Qp-LfN"/>
                         <outlet property="topTextField" destination="AGV-fh-Nau" id="sjJ-4b-oZM"/>
                     </connections>
                 </viewController>
@@ -125,6 +122,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="photo.badge.plus" catalog="system" width="128" height="97"/>
         <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -13,9 +13,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickView: UIImageView!
-    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareActionButton: UIBarButtonItem!
 
+    @IBOutlet weak var navigateItemView: UINavigationItem!
+    @IBOutlet weak var toolbarView: UIToolbar!
+    
     struct Meme {
         var topText: String
         var bottomText: String
@@ -59,8 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        print(info)
+
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.imagePickView.image = image
             self.imagePickView.contentMode = .scaleAspectFit
@@ -117,16 +119,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     func generateMemedImage() -> UIImage {
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        navigationController?.setToolbarHidden(true, animated: false)
+        setupToolbar(show: false)
         
         UIGraphicsBeginImageContext(self.imageBoardView.bounds.size)
         imageBoardView.drawHierarchy(in: self.imageBoardView.bounds, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.setToolbarHidden(false, animated: false)
+        setupToolbar(show: true)
         
         return memedImage
     }
@@ -168,6 +168,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         #endif
         shareActionButton.isEnabled = imagePickView.image !== nil
+    }
+    
+    
+    func setupToolbar(show: Bool) {
+        navigationController?.setNavigationBarHidden(!show, animated: false)
+        navigationController?.setToolbarHidden(!show, animated: false)
+        toolbarView.isHidden = !show
     }
 }
 
